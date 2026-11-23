@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Trace sightlines through a side section of angled slats from a chosen viewing position.">
+  <title>Louvre privacy simulator | Tint &amp; Screen</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <script defer src="model.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#controls">Skip to controls</a>
+  <header class="shell bar"><img src="tint-and-screen.svg" alt="Tint &amp; Screen" width="190" height="32"><a href="https://tintandscreen.co.za/architectural-screens/privacy-screens/">Privacy screen guide</a></header>
+  <main>
+    <div class="intro"><div class="shell"><h1>Louvre privacy simulator</h1><p>Trace sightlines through a side section of angled slats from a chosen viewing position.</p><a class="jump" href="#result">View result</a></div></div>
+    <noscript><p class="shell help">Enable JavaScript to use this offline tool.</p></noscript>
+    <div class="shell workspace">
+      <form id="controls" tabindex="-1" autocomplete="off" onsubmit="return false">
+        <h2>Slat section</h2><p class="help">Angles are measured from horizontal. Positive angles rise towards the inside of the screen.</p>
+        <div class="fields">
+          <label>Slat depth (mm)<input id="depth" type="number" value="110" min="10" max="400" step="1" required></label>
+          <label>Vertical pitch (mm)<input id="pitch" type="number" value="85" min="10" max="400" step="1" required></label>
+          <label>Slat thickness (mm)<input id="thick" type="number" value="8" min="1" max="50" step="1" required></label>
+          <label>Slat angle (°)<input id="angle" type="number" value="30" min="-80" max="80" step="1" required></label>
+          <label>Viewer distance (mm)<input id="distance" type="number" value="650" min="250" max="3000" step="1" required></label>
+          <label>Eye height above centre (mm)<input id="eye" type="number" value="0" min="-900" max="900" step="1" required></label>
+          <label>Distance behind screen (mm)<input id="target" type="number" value="450" min="250" max="3000" step="1" required></label>
+        </div>
+
+        <p class="message" id="message" role="status"></p>
+      </form>
+      <section class="result" id="result" tabindex="-1" aria-labelledby="result-title">
+        <h2 id="result-title">Sightline section</h2>
+        <p class="lead" id="summary" aria-live="polite"></p><canvas id="view" width="900" height="430" aria-label="Cross-section with open and blocked sightlines"></canvas><ul class="rows" id="details"></ul><p class="note">Teal solid rays reach the target. Dotted red rays stop at the first slat. The model samples a vertical target 600 mm high.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
